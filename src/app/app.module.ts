@@ -31,6 +31,6 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
-  bootstrap: [InicioComponent]
+  bootstrap: [MateriasComponent]
 })
 export class AppModule { }
