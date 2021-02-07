@@ -10,6 +10,7 @@ import { CuerpoComponent } from './component/cuerpo/cuerpo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms'
 
+
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
