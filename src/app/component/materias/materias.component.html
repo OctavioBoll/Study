@@ -1,0 +1,263 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 mx-auto">
+      <h1 class="">Materias</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 mx-auto">
+      <div class="" *ngIf="mostrar === 'M'">
+
+        
+
+        <button type="button" class="col-12 btn btn-primary btn-block" (click)="open(contentMateria)">Agregar Materia</button>
+        <div class="">
+          <ul>
+            <li *ngFor="let items of materias.data" class="pt-1 ">
+              <button class="btn btn-primary btn-materias" (click)="cambiarVista(items.idMat)">{{items.nombre}}
+
+                
+              </button>
+              <!--
+              <button class="btn btn-success mx-2" (click)="openEdit(contentMateria,items)">Editar</button>
+              -->
+              <button class="btn btn-danger float-right" (click)="eliminar(items)">Eliminar</button>
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="mostrar === 'U'">
+
+    
+
+
+    <div class="col-xs-12 col-sm-4 mx-auto">
+      <button type="button" class="col-12 btn btn-primary btn-block" (click)="open(contentUnidades)">Agregar Unidades</button>
+      <button type="button" class="col-12 btn btn-danger btn-block" (click)="volverAMaterias()">Volver</button>
+
+
+      <ul class="pt-2">
+        <li *ngFor="let items of uniXMat">
+          <span class="btn btn-primary mx-2 btn-materias" (click)="cambiarVistaATemas(items.idUni)">
+            {{items.nombre}}</span>
+
+          <!--
+          <button class="btn btn-success mx-2" (click)="openEditUni(contentUnidades,items)">Editar</button>
+          -->
+
+          <button class="btn btn-danger" (click)="eliminarUni(items)">Eliminar</button>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="row" *ngIf="mostrar === 'T'">
+
+    <div class="col-xs-12 col-sm-4 mx-auto">
+      <button type="button" class="col-12 btn btn-primary btn-block" (click)="open(contentTema)">Agregar Temas</button>
+      <button type="button" class="col-12 btn btn-danger btn-block" (click)="volverAUnidades()">Volver</button>
+      <ul class="pt-2">
+        <li *ngFor="let items of temaXUni">
+          <span class="btn btn-primary mx-2 btn-materias" (click)="openEditTema(contentTemaEdit,items)">{{items.nombre}}</span>
+          <!--
+          <button class="btn btn-success mx-2" (click)="openEditTema(contentTema,items)">Editar</button>
+          -->
+          
+          <button class="btn btn-danger" (click)="eliminarTema(items)">Eliminar</button>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <!------------------------ Tempates ----------------->
+
+  <!-- Materia -->
+  <ng-template #contentMateria let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Materia create/update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <form [formGroup]="materiaForm">
+            <div class="form-group">
+              <label>Id: {{contadorIdMaterias}}</label>
+              <input type="number" hidden="false" formControlName="idMat" class="form-control"
+                [(ngModel)]="contadorIdMaterias">
+
+            </div>
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" formControlName="nombre" class="form-control">
+            </div>
+
+          </form>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="guardarMateria()" *ngIf="!actualizar">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="actualizarMateria()"
+        *ngIf="actualizar">Actualizar</button>
+    </div>
+  </ng-template>
+
+  <!-- Unidad -->
+  <ng-template #contentUnidades let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Unidades create/update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <form [formGroup]="unidadesForm">
+            <div class="form-group">
+              <label>Id: </label>
+              <label> {{contadorIdUnidades}}</label>
+              <input type="number" formControlName="idUni" hidden="false" class="form-control" [(ngModel)]="contadorIdUnidades">
+
+            </div>
+
+            <div class="form-group">
+              <label>Id Familia Uni</label>
+              <label> {{idMateriaDos}}</label>
+              <input type="number" hidden="false" formControlName="idFamiliaMat" class="form-control"
+                [(ngModel)]="idMateriaDos">
+            </div>
+
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" formControlName="nombre" class="form-control">
+            </div>
+
+          </form>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="guardarUnidad()" *ngIf="!actualizar">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="actualizarUnidad()"
+        *ngIf="actualizar">Actualizar</button>
+    </div>
+  </ng-template>
+
+  <!-- Tema -->
+  <ng-template #contentTema let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Temas create/update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <form [formGroup]="temasForm">
+
+            <div class="form-group">
+              <label>Id:</label>
+              <label> {{contadorIdTemas}}</label>
+              <input type="number" formControlName="idTema" hidden="false" class="form-control" [(ngModel)]="contadorIdTemas">
+              
+            </div>
+
+            <div class="form-group">
+              <label>Id Unidad</label>
+              <label> {{idUnidadDos}}</label>
+              <input type="number" formControlName="idFamiliaUni"  hidden="false" class="form-control" [(ngModel)]="idUnidadDos">
+            </div>
+
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" formControlName="nombre" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label>nota</label>
+              <textarea type="text" formControlName="nota" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+
+          </form>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="guardarTemas()" *ngIf="!actualizar">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="actualizarTemas()"
+        *ngIf="actualizar">Actualizar</button>
+    </div>
+  </ng-template>
+
+
+
+  <!-- Tema Edit -->
+
+
+  <ng-template #contentTemaEdit let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Temas create/update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <form [formGroup]="temasForm">
+
+            <div class="form-group">
+              <input type="number" hidden="fasle" formControlName="idTema" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <input type="number" hidden="fasle" formControlName="idFamiliaUni" class="form-control" >
+            </div>
+
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" formControlName="nombre" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label>nota</label>
+              <textarea type="text" formControlName="nota" class="form-control" cols="30" rows="5"></textarea>
+              
+            </div>
+
+          </form>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="guardarTemas()" *ngIf="!actualizar">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="actualizarTemas()"
+        *ngIf="actualizar">Actualizar</button>
+    </div>
+  </ng-template>
+
+</div>
