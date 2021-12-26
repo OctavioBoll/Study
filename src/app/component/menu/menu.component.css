@@ -1,0 +1,102 @@
+.list-components{
+    list-style:none;
+}
+
+#checkbox{
+  display: none;
+  width: 0px;
+  height: 0px;
+  padding: 0px;
+
+  
+}
+
+/**
+
+
+  
+*/
+
+.btnLogout{
+  margin: 5px;
+}
+
+.flecha{
+  color:#b9049b;
+  transform: rotateZ(0deg);
+  transition: 0.5s;
+}
+
+.flechaColappso{
+  
+  top: 20px;
+  left: 260px;
+  position: fixed;
+  
+  outline: none;
+  z-index: 3;
+  
+}
+
+.logoText{
+  text-align: center;
+  font-family: 'Vujahday Script', cursive;
+  font-size: 3rem;
+  
+}
+
+input:checked + .flecha{
+  
+  transform:rotateZ(180deg);
+  transition: 0.5s;
+}
+
+
+.sidebar{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 300px;
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0%;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+  
+}
+
+
+  .sidebar span {
+    padding: 0px 0px 0px 0px;
+    margin-left: -50px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #8b8383;
+    display: block;
+  }
+
+  .sidebar span:hover {
+    color: #f1f1f1;
+  }
+
+
+
+.userContainer{
+  background-color: rgba(0, 0, 0, 0.466);
+  border-radius: 15px;
+  border:3px solid rgba(105, 73, 184, 0.507);
+  box-shadow:0 0 5px rgba(137, 43, 226, 0.493);
+  
+ 
+}
+
+.nombre{
+  color: antiquewhite;
+}
+
+.btnLogout{
+  margin-left: 130px;
+  background-color: rgb(29, 9, 18);
+  color: rgb(255, 0, 0);
+  box-shadow:0 0 5px rgba(226, 43, 43, 0.623);
+}

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "firestudy-b6b1a": {
+      "hosting": {
+        "Study": [
+          "firestudy-b6b1a"
+        ]
+      }
+    }
+  }
+}

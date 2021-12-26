@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 mx-auto">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <form [formGroup]="formsLogin">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="staticEmail" class="text">Email: </label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control"  placeholder="ingrese su email" formControlName="email"  name="email">
+                                    <div class="error" *ngIf="isValidField('email')">
+                                        <p class="text text-danger">*{{getErrorMessage('email')}}</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="container mt-4">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="inputPass" class="">Password: </label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="password" class="form-control" placeholder="ingrese su password" formControlName="pass"  name="pass" minlength="6">
+                                    <div class="error" *ngIf="isValidField('pass')" >
+                                        <p class="text-danger">*{{getErrorMessage('pass')}}</p>
+                                    </div>
+                                </div>
+                                
+                               
+
+                            </div>
+                        </div>
+                    </form>
+                        <div class="d-grid gap-2 mt-4" *ngIf="action ==='login'">
+                            <button class="btn btn-primary m-1 btn-block" (click)="customLogin()">Login with Email</button>
+                            <button class="btn btn-danger m-1 btn-block" (click)="loginWithGoogle()">Login with Google</button>
+                            
+                        </div>
+                        <div>
+                            <button class="btn btn-primary btn-block mt-4" *ngIf="action==='registrer'" (click)="resgistrer()">Registrarse</button>
+                        </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<!--
+
+
+
+<div class="container">
+    <div class="col-6 mx-auto">
+        <form [formGroup]="formsLogin">
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-6 mx-auto justify-content-right">
+                    <input type="text" class="form-control" formControlName="email"  name="email">
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label for="inputPass" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-6 mx-auto justify-content-right">
+                    <input type="password" class="form-control"  formControlName="pass"  name="pass">
+                </div>
+            </div>
+        </form>
+            <div class="d-grid gap-2 d-md-flex">
+                <button class="btn btn-primary m-1" (click)="loginWithGoogle()">Login with Google</button>
+                <button class="btn btn-primary m-1" (click)="customLogin()">Login with Email</button>
+            </div>
+    </div>
+</div>
+
+-->
+

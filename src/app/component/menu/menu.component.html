@@ -1,0 +1,89 @@
+
+
+    <div class="col-sm-12">
+        <div class="flechaColappso" [ngStyle]="{'transform': valorCheck?'translateX(-10px)':'translateX(-240px)', 'transition': valorCheck?'0.5s':'0.5s' }">
+            <label for="checkbox">
+              <input type="checkbox" id="checkbox" class="navbar-toggler-icon " (click)="sidebarVisible()">
+              <span id="flecha" class="flecha fa fa-2x fa-arrow-left btn"></span>
+              
+            </label>
+        </div>
+    </div>
+
+
+
+    <nav id="sidebar" class="container col-sm-12 sidebar" [ngStyle]="{'transform': valorCheck?'translateX(0px)':'translateX(-280px)', 'transition': valorCheck?'0.5s':'0.5s' }" >
+            
+                    
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sidebar-header text-white">
+                        <h2 class="logoText">
+                            <b>Study</b>
+                            </h2>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm-12">
+                     <div class="container userContainer" *ngIf="auth.user | async as user">
+                             <h3 class="nombre">Bienvenido, {{user.displayName}}</h3>
+                             <button class="btnLogout btn btn-sm" (click)="logout()">Logout</button>
+                     </div>
+                </div>
+            </div>  
+        </div>
+         <hr>
+         <div class="list-item">
+             <ul class="list-components">
+                 <li class="active" >
+                     <span class="nav-link btn" routerLink="/inicio" (click)="sidebarVisible()">Inicio</span>
+                 </li>
+                 
+     
+                 <div *ngIf="auth.user | async as user; else login">
+                     <li >
+                         <span class="nav-link btn" routerLink="/Profile" (click)="sidebarVisible()">Profile</span>
+                     </li>
+                     <li>
+                         <span class="nav-link btn" routerLink="/misMaterias" (click)="sidebarVisible()">Materias</span>
+                     </li>
+     
+                 </div>
+     
+                 <ng-template #login>
+                         <li class="nav-item">
+                             <span class="nav-link btn" routerLink="/login" (click)="sidebarVisible()">Login</span>
+                         </li>
+                         <li class="nav-item">
+                             <span class="nav-link btn" routerLink="/Registrer" (click)="sidebarVisible()">Registrar</span>
+                         </li>
+                 </ng-template>
+     
+             </ul>
+         </div>
+     </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
